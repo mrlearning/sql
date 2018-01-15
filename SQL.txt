@@ -153,3 +153,12 @@ SELECT p.name, p.lastname FROM people AS p, cities AS c WHERE p.city = c.city AN
 
 49. Выбрать города из таблицы people и численность населения из таблицы cities
 SELECT people.city, cities.population FROM people INNER JOIN cities ON people.city = cities.city;
+
+50. Вывести все города из таблицы people и, если город присутствует в таблице cities, получить численность населения
+SELECT people.city, cities.population FROM people LEFT JOIN cities ON people.city = cities.city;
+
+51. Вывести все города из таблицы cities и проживающих в них людей из таблицы people
+SELECT people.name, people.lastname, cities.city FROM people RIGHT JOIN cities ON people.city = cities.city;
+
+52. Вывести всех людей из таблицы people и все города из таблицы cities
+SELECT people.name, people.lastname, cities.city FROM people FULL OUTER JOIN cities ON people.city = cities.city;
