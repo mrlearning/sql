@@ -162,3 +162,6 @@ SELECT people.name, people.lastname, cities.city FROM people RIGHT JOIN cities O
 
 52. Вывести всех людей из таблицы people и все города из таблицы cities
 SELECT people.name, people.lastname, cities.city FROM people FULL OUTER JOIN cities ON people.city = cities.city;
+
+53. Вывести в 2 столбца имена людей, проживающих в одном городе
+SELECT a.name, b.name, a.city FROM people a, people b WHERE a.id<>b.id AND a.city=b.city;
