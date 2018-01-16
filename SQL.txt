@@ -165,3 +165,21 @@ SELECT people.name, people.lastname, cities.city FROM people FULL OUTER JOIN cit
 
 53. Вывести в 2 столбца имена людей, проживающих в одном городе
 SELECT a.name, b.name, a.city FROM people a, people b WHERE a.id<>b.id AND a.city=b.city;
+
+54. Объединить без повторов список городов из таблицы people и из таблицы cities
+SELECT city FROM people UNION SELECT city FROM cities;
+
+55. Посчитать количество человек из таблицы people для каждого города
+SELECT COUNT(id), city FROM people GROUP BY city;
+
+56. Посчитать количество человек из таблицы people только для тех городов, где их (человек) больше 3
+SELECT COUNT(id), city FROM people GROUP BY city HAVING COUNT(id) > 3;
+
+57. Выбрать из таблицы people только тех людей, город которых присутствует в таблице cities
+SELECT name, lastname FROM people WHERE EXISTS (SELECT city FROM cities WHERE people.city = cities.city);
+
+58. Выбрать города из таблицы people с численностью населения больше 1000000
+SELECT city FROM people WHERE city = ANY(SELECT city FROM cities WHERE population > 1000000);
+
+59. Выбрать города из таблицы people, если население всех городов больше 1000000
+SELECT city FROM people WHERE city = ALL(SELECT city FROM cities WHERE population > 1000000);
