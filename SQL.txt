@@ -183,3 +183,15 @@ SELECT city FROM people WHERE city = ANY(SELECT city FROM cities WHERE populatio
 
 59. Выбрать города из таблицы people, если население всех городов больше 1000000
 SELECT city FROM people WHERE city = ALL(SELECT city FROM cities WHERE population > 1000000);
+
+60. Скопировать все строки, где возраст больше 60 в отдельную таблицу
+SELECT * INTO old_people FROM people WHERE age > 60;
+
+61. Скопировать из таблицы people в таблицу moskow_people имена и фамилии людей из Москвы
+INSERT INTO moskow_people (name, lastname) SELECT name, lastname FROM people WHERE city=Moskow;
+
+62. Выбрать из таблицы people имена, фамилии и города. Если город не указан, то заменить на homeless
+SELECT name, lastname, IFNULL (city, 'homeless') FROM people;
+
+63. Выбрать первое ненулевое значение из списка
+SELECT COALESCE(NULL, NULL, 'hello');
