@@ -19,7 +19,7 @@ def get_tasks_from_database(sqlite_file):
 
 def set_task(task):
     result = False
-    answer = input("{0} {1}\n".format(task.id, task.description))
+    answer = input("\n{0} {1}\n".format(task.id, task.description))
     if answer == task.answer:
         result = True
     else:
